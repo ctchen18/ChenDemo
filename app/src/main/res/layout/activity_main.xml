@@ -64,6 +64,7 @@
             android:layout_margin="6dp"
             android:background="@color/white"/>
         <ImageButton
+            android:id="@+id/btn3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
