@@ -18,6 +18,7 @@ public class ListViewAdapter extends BaseAdapter {
     private Context mContext;
     public ListViewAdapter(Context context){
         mContext=context;
+
         mInflater=(LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

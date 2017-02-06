@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(v.getContext(),"Button 1 Clicked", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(v.getContext(), ViewPagerActivity.class);
+                startActivity(intent);
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
