@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.util.Log;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.user.chendemo.util.UtilLog;
+
+public class MainActivity extends BasicActivity {
     private ImageButton btn1;
     private ImageButton btn2;
     private ImageButton btn3;
@@ -41,13 +44,18 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),ListViewActivity.class);
-                startActivity(intent);
+                toActivity(ListViewActivity.class);
+                //Intent intent = new Intent(v.getContext(),ListViewActivity.class);
+                //startActivity(intent);
             }
         });
     }
     public void onBtnTwoCLick(View v){
-        Toast.makeText(this,"Button 2 Clicked",Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"Button 2 Clicked",Toast.LENGTH_LONG).show();
+        toastLong("Button 2 clicked");
+        UtilLog.logD("testD","Toast");
+        //Log.d("testD","Toast");
+
     }
 
 }
