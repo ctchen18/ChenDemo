@@ -5,10 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.user.chendemo.R;
+import com.example.user.chendemo.util.UtilDensity;
 
 /**
  * Created by user on 2017/1/25.
@@ -67,10 +69,19 @@ public class ListViewAdapter extends BaseAdapter {
         if(position%2==0){
             holder.textView1.setVisibility(View.VISIBLE);
             holder.textView3.setVisibility(View.INVISIBLE);
+            holder.textView2.setBackgroundResource(R.drawable.chatfrom_bg_focused);
+            holder.lp.setMargins(UtilDensity.dip2px(mContext,50),0,0,0);
+            holder.lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            holder.textView2.setLayoutParams(holder.lp);
+
         }
         else{
             holder.textView1.setVisibility(View.INVISIBLE);
             holder.textView3.setVisibility(View.VISIBLE);
+            holder.textView2.setBackgroundResource(R.drawable.chatto_bg_focused);
+            holder.lp.setMargins(0,0,UtilDensity.dip2px(mContext,50),0);
+            holder.lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            holder.textView2.setLayoutParams(holder.lp);
         }
 
         //View rowView = mInflater.inflate(R.layout.list_item,parent,false);
@@ -92,4 +103,5 @@ class ViewHolder{
     TextView textView1;
     TextView textView2;
     TextView textView3;
+    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
         }
