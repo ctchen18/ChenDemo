@@ -25,6 +25,7 @@ public class MainActivity extends BasicActivity {
     private void initialView(){
         btn1 = (ImageButton) findViewById(R.id.btn1);
         btn3 = (ImageButton) findViewById(R.id.btn3);
+
     }
 
 /*    private void View.OnClickListener btnListener1(){
