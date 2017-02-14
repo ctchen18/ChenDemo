@@ -13,7 +13,9 @@ public class BasicActivity extends AppCompatActivity {
 
     }
     public void toActivity(Class name){
-        Intent intent = new Intent(this,ListViewActivity.class);
+        //Intent intent = new Intent(this,ListViewActivity.class);
+        //toastLong(name.toString());
+        Intent intent = new Intent(this,name);
         startActivity(intent);
     }
     public void toastLong(String content){
@@ -23,4 +25,5 @@ public class BasicActivity extends AppCompatActivity {
     public void toastShort(String content){
         Toast.makeText(this,content,Toast.LENGTH_SHORT).show();
     }
+
 }

@@ -11,16 +11,25 @@ import android.util.Log;
 
 import com.example.user.chendemo.util.UtilLog;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends BasicActivity {
     private ImageButton btn1;
-    private ImageButton btn2;
+    //private ImageButton btn2;
     private ImageButton btn3;
+
+    @OnClick(R.id.btn2)
+    public void button2Click(){
+        toActivity(DialogActivity.class);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialView();
         initialListener();
+        ButterKnife.bind(this);   //how to use butterknife
     }
     private void initialView(){
         btn1 = (ImageButton) findViewById(R.id.btn1);
