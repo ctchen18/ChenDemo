@@ -47,6 +47,7 @@ public class MainActivity extends BasicActivity {
             public void onClick(View v) {
 
                 Toast.makeText(v.getContext(),"Button 1 Clicked", Toast.LENGTH_LONG).show();
+                //Intent intent = new Intent(v.getContext(), ViewPagerActivity.class);
                 Intent intent = new Intent(v.getContext(), ViewPagerActivity.class);
                 startActivity(intent);
             }

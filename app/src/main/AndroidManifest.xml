@@ -20,7 +20,7 @@
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".DialogActivity"></activity>
-
+        <!--<activity android:name=".HeaderViewPager"></activity> -->
     </application>
 
 </manifest>

@@ -1,10 +1,14 @@
 package com.example.user.chendemo;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -15,7 +19,10 @@ import java.util.ArrayList;
 
 
 import com.example.user.chendemo.adapter.ListViewAdapter;
+import com.example.user.chendemo.adapter.ViewPagerAdapter;
+import com.example.user.chendemo.listViewFragments.HeaderFragment;
 import com.example.user.chendemo.util.UtilLog;
+
 
 public class ListViewActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -53,11 +60,33 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
     }
     private void initialView(){
         listView =(ListView) findViewById(R.id.list_view);
+
         View view = getLayoutInflater().inflate(R.layout.list_view_header,null); //null for view group
         LinearLayout listViewHeader =(LinearLayout) view.findViewById(R.id.list_view_header);
+        //
+        ViewPager viewPager;
+        ArrayList<Fragment> fragmentArrayList = new ArrayList<Fragment>();
+        viewPager = (ViewPager) view.findViewById(R.id.view_pager_header);
+        fragmentArrayList.add(new HeaderFragment());
+        fragmentArrayList.add(new HeaderFragment());
+        fragmentArrayList.add(new HeaderFragment());
+        fragmentArrayList.add(new HeaderFragment());
+        fragmentArrayList.add(new HeaderFragment());
+        fragmentArrayList.add(new HeaderFragment());
+        fragmentArrayList.add(new HeaderFragment());
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager());
+        viewPagerAdapter.setContent(fragmentArrayList);
+        viewPager.setAdapter(viewPagerAdapter);
 
         ListViewAdapter listViewAdapter = new ListViewAdapter(this,listResult);
         listView.addHeaderView(listViewHeader);
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int width = displaymetrics.widthPixels;
+        AbsListView.LayoutParams headerViewParams = new AbsListView.LayoutParams(width,300);
+        listViewHeader.setLayoutParams(headerViewParams);
 
         //pure java code
         TextView tv =new TextView(this);
