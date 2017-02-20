@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import com.example.user.chendemo.R;
 import com.squareup.picasso.Picasso;
 
-import java.sql.SQLClientInfoException;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
