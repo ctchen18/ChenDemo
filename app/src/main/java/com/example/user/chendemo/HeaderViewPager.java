@@ -11,6 +11,8 @@ import com.example.user.chendemo.listViewFragments.HeaderFragment;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by user on 2017/2/15.
  */
