@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.user.chendemo.R;
+import com.squareup.picasso.Picasso;
+
+import java.sql.SQLClientInfoException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +31,9 @@ public class HeaderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View view;
+    private ImageView.ScaleType scaleType;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,8 +72,30 @@ public class HeaderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        
-        return inflater.inflate(R.layout.fragment_header, container, false);
+        view = inflater.inflate(R.layout.fragment_header,container,false);
+        ImageView imgView = (ImageView) view.findViewById(R.id.fragment_header_image_view);
+
+        String url = "https://i.ytimg.com/vi/GTBWm3cXnsY/maxresdefault.jpg";
+//debugging, turns out to be emulator's internet connection error.
+//        Picasso.Builder builder = new Picasso.Builder(imgView.getContext());
+//        builder.listener(new Picasso.Listener()
+//        {
+//            @Override
+//            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception)
+//            {
+//                exception.printStackTrace();
+//            }
+//        });
+//        builder.build().load(url).into(imgView);
+
+        Picasso.with(imgView.getContext())
+                .load(url)
+                .error(R.mipmap.pic1)
+                .into(imgView);
+
+
+        imgView.setScaleType(scaleType);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -92,6 +121,10 @@ public class HeaderFragment extends Fragment {
         super.onDetach();
        // mListener = null;
     }
+    public void setScaleType(ImageView.ScaleType st){
+        scaleType = st;
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
