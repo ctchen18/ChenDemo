@@ -90,7 +90,8 @@ public class HeaderFragment extends Fragment {
 
         Picasso.with(imgView.getContext())
                 .load(url)
-                .error(R.mipmap.pic1)
+                .placeholder(R.mipmap.maxresdefault)
+                .error(R.mipmap.maxresdefault)
                 .into(imgView);
 
 
