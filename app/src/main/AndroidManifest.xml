@@ -20,7 +20,11 @@
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".BasicActivity"></activity>
         <activity android:name=".DialogActivity"></activity>
+
         <!--<activity android:name=".HeaderViewPager"></activity> -->
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

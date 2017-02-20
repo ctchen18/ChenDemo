@@ -3,9 +3,12 @@ package com.example.user.chendemo;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+
+import com.example.user.chendemo.dialog.CustomDialog;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -48,9 +51,26 @@ public class DialogActivity extends BasicActivity {
                 inputDialog();
                 break;
             case R.id.rb8:
+                customDialog();
                 break;
             default:
         }
+    }
+    private void customDialog(){
+        CustomDialog dialog = new CustomDialog(this, new CustomDialog.ICustomDialogEventListener() {
+            @Override
+            public void onClickListener() {
+                toastShort("OK clicked");
+                Intent intent = new Intent();
+                intent.putExtra("message2","Dialog");
+                setResult(RESULT_OK,intent);
+                onBackPressed();
+
+            }
+        });
+        //dialog.setTitle("SystemTitle"); // try not to use it, confusing with style/xml
+        dialog.show();
+
     }
 
     private void normalDialog(){
@@ -227,5 +247,9 @@ public class DialogActivity extends BasicActivity {
             }
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();          //has to be last line
     }
 }
