@@ -26,6 +26,11 @@ public class MainActivity extends BasicActivity {
         //toActivity(DialogActivity.class);
         startActivityForResult(intent,2);
     }
+    @OnClick(R.id.launch_button)
+    public void launchButtonClick(){
+        Intent intent = new Intent(this,launch_mode_a.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -36,6 +36,7 @@
             android:src="@drawable/bt_style"
             />
         <ImageButton
+            android:id="@+id/launch_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginRight="12dp"

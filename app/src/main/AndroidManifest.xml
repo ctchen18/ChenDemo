@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.chendemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".ChenApplication"
         android:allowBackup="true"
@@ -18,13 +21,14 @@
         </activity>
         <activity android:name=".ListViewActivity" />
         <activity android:name=".ViewPagerActivity" />
-        <activity android:name=".BasicActivity"></activity>
-        <activity android:name=".DialogActivity"></activity>
+        <activity android:name=".BasicActivity" />
+        <activity android:name=".DialogActivity" />
 
-        <!--<activity android:name=".HeaderViewPager"></activity> -->
+        <!-- <activity android:name=".HeaderViewPager"></activity> -->
+        <activity android:name=".launch_mode_a" android:launchMode="standard"/>
+        <activity android:name=".launch_mode_b" android:launchMode="singleTop"/>
+        <activity android:name=".launch_mode_c" android:launchMode="singleTask"/>
+        <activity android:name=".launch_mode_d" android:launchMode= "singleInstance"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
