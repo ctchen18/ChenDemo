@@ -74,10 +74,21 @@
             android:layout_margin="6dp"
             android:background="@color/white"/>
     </LinearLayout>
-    <ListView
+
+
+    <FrameLayout
+        android:id="@+id/frame_bar"
+        android:layout_above="@+id/tool_bar"
+        android:layout_below="@id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_above="@id/tool_bar"
-        android:layout_below="@id/title_bar"></ListView>
+        android:background="@color/white">
+    <Button
+        android:id="@+id/main_timer_bt"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:text="Timer"
+
+        />
+    </FrameLayout>
 </RelativeLayout>

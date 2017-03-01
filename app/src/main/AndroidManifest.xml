@@ -25,10 +25,19 @@
         <activity android:name=".DialogActivity" />
 
         <!-- <activity android:name=".HeaderViewPager"></activity> -->
-        <activity android:name=".launch_mode_a" android:launchMode="standard"/>
-        <activity android:name=".launch_mode_b" android:launchMode="singleTop"/>
-        <activity android:name=".launch_mode_c" android:launchMode="singleTask"/>
-        <activity android:name=".launch_mode_d" android:launchMode= "singleInstance"></activity>
+        <activity
+            android:name=".launch_mode_a"
+            android:launchMode="standard" />
+        <activity
+            android:name=".launch_mode_b"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".launch_mode_c"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".launch_mode_d"
+            android:launchMode="singleInstance" />
+        <activity android:name=".TimerActivity"></activity>
     </application>
 
 </manifest>
