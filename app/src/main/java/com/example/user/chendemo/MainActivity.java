@@ -30,11 +30,17 @@ public class MainActivity extends BasicActivity {
     public void launchButtonClick(){
         Intent intent = new Intent(this,launch_mode_a.class);
         startActivity(intent);
+
     }
     @OnClick(R.id.main_timer_bt)
     public void timerCLick(){
         Intent intent = new Intent(this,TimerActivity.class);
                 startActivity(intent);
+    }
+    @OnClick(R.id.main_animation_bt)
+    public void animationCLick(){
+        Intent intent = new Intent(this,AnimationActivity.class);
+        startActivity(intent);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

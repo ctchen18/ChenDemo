@@ -274,6 +274,7 @@ public class DialogActivity extends BasicActivity {
     }
     @Override
     public void onBackPressed() {
+
         super.onBackPressed();          //has to be last line
     }
 }

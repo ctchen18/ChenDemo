@@ -76,7 +76,7 @@
     </LinearLayout>
 
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_bar"
         android:layout_above="@+id/tool_bar"
         android:layout_below="@id/title_bar"
@@ -88,7 +88,15 @@
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:text="Timer"
+        android:textSize="12sp"/>
+        <Button
+            android:id="@+id/main_animation_bt"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="Animation"
+            android:textSize="12sp"
+            android:layout_gravity="center_horizontal"
 
-        />
-    </FrameLayout>
+            />
+    </LinearLayout>
 </RelativeLayout>
