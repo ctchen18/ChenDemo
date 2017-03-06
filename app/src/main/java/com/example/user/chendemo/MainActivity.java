@@ -42,6 +42,12 @@ public class MainActivity extends BasicActivity {
         Intent intent = new Intent(this,AnimationActivity.class);
         startActivity(intent);
     }
+    @OnClick(R.id.main_animator)
+    public void animatorCLick(){
+        Intent intent = new Intent(this,AnimatorActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
