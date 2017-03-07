@@ -31,6 +31,7 @@
         android:background="@android:color/holo_orange_light"
         android:text="Hello World"/>
 
+    <!--need orientation and total row/column count, can use weight, but more complex-->
     <GridLayout
         android:orientation="horizontal"
         android:id="@+id/animator_bottom"

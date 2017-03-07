@@ -21,18 +21,22 @@ public class AnimatorActivity extends BasicActivity {
 
     private ValueAnimator repeatAnimator;
 
+    //moves horizontally back and forth with -200, and 0 to original position, translationY goes vertically
     @OnClick(R.id.animator_trans)
     public void trans(){
         ObjectAnimator animator = ObjectAnimator.ofFloat(tv, "translationX", 0, 200, -200,0,100); //translationY
         animator.setDuration(2000);
         animator.start();
     }
+    //go to 3 times bigger, then back to 1 times bigger and not disappear, scaleY grows vertically,
     @OnClick(R.id.animator_scale)
     public void scale(){
         ObjectAnimator animator = ObjectAnimator.ofFloat(tv, "scaleX", 0, 3, 1); //scaleY
         animator.setDuration(2000);
         animator.start();
     }
+
+    //in hex decimal, 0xff = not transparent, then RGB, evaluator = custome made for this class
     @OnClick(R.id.animator_color)
     public void color(){
         ObjectAnimator animator = ObjectAnimator.ofInt(tv, "BackgroundColor", 0xffff00ff, 0xffffff00, 0xffff00ff);
@@ -40,6 +44,8 @@ public class AnimatorActivity extends BasicActivity {
         animator.setEvaluator(new ArgbEvaluator());
         animator.start();
     }
+
+    //ofObject can be viewed to understand what an evaluator requires if it is custom made
     @OnClick(R.id.animator_char)
     public void charFAnim(){
         ValueAnimator animator = ValueAnimator.ofObject(new CharEvaluator(),new Character('A'),new Character('Z'));
@@ -54,12 +60,17 @@ public class AnimatorActivity extends BasicActivity {
         animator.setInterpolator(new AccelerateInterpolator());
         animator.start();
     }
+
+    //from transparent to none to transparent in two seconds
     @OnClick(R.id.animator_alpha)
     public void alpha(){
         ObjectAnimator animator = ObjectAnimator.ofFloat(tv,"alpha",1,0,1);
         animator.setDuration(2000);
         animator.start();
     }
+
+    //how many degree to torque around the center, rotation X = rotate based on x axis only
+    //interpolator can also be implemented together
     @OnClick(R.id.animator_rotation)
     public void rotation(){
         ObjectAnimator animator = ObjectAnimator.ofFloat(tv,"rotation",0,180,0);//rotationX   rotationY
@@ -75,9 +86,9 @@ public class AnimatorActivity extends BasicActivity {
 //        repeatAnimator.setStartDelay(3000);
         repeatAnimator.start();
     }
-
+    //need to remove all listener/objects on stop for garbage collection
     @OnClick(R.id.animator_bt_cancel)
-    public void cancleAnimator(){
+    public void cancelAnimator(){
         repeatAnimator.removeAllListeners();
         repeatAnimator.removeAllUpdateListeners();
         repeatAnimator.cancel();
@@ -102,39 +113,40 @@ public class AnimatorActivity extends BasicActivity {
     }
 
     private ValueAnimator doAnimatorListener(){
-        ValueAnimator animator = ValueAnimator.ofInt(0,400);
+        ValueAnimator animator = ValueAnimator.ofInt(0,400);   //system divides animation duration  into 400 time slots, each slot has 0,1,2...400
 
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                int curValue = (int)animation.getAnimatedValue();
+                int curValue = (int)animation.getAnimatedValue();   //based on this, update the position of text view
                 tv.layout(tv.getLeft(),curValue,tv.getRight(),curValue+tv.getHeight());
             }
         });
+        //when animation start/stop/repeat
         animator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                UtilLog.logD("Yan","animation start");
+                UtilLog.logD("Chen","animation start");
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                UtilLog.logD("Yan","animation end");
+                UtilLog.logD("Chen","animation end");
             }
 
             @Override
             public void onAnimationCancel(Animator animation) {
-                UtilLog.logD("Yan","animation cancel");
+                UtilLog.logD("Chen","animation cancel");
             }
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-                UtilLog.logD("Yan","animation repeat");
+                UtilLog.logD("Chen","animation repeat");
             }
         });
         animator.setRepeatMode(ValueAnimator.REVERSE);
         animator.setRepeatCount(ValueAnimator.INFINITE);
-        animator.setInterpolator(new BounceInterpolator());
+        animator.setInterpolator(new BounceInterpolator()); //
         animator.setDuration(1000);
         return animator;
     }

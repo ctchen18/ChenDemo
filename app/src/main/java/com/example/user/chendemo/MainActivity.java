@@ -3,7 +3,10 @@ package com.example.user.chendemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -12,14 +15,19 @@ import android.util.Log;
 import com.example.user.chendemo.bean.Book;
 import com.example.user.chendemo.util.UtilLog;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BasicActivity {
+public class MainActivity extends BasicActivity implements View.OnTouchListener{
     private ImageButton btn1;
     //private ImageButton btn2;
     private ImageButton btn3;
 
+    private GestureDetector mGestureDetector;
+
+    @BindView(R.id.frame_layout)
+        FrameLayout fl;
     @OnClick(R.id.btn2)
     public void button2Click(){
         Intent intent= new Intent(this,DialogActivity.class);
@@ -55,6 +63,8 @@ public class MainActivity extends BasicActivity {
         initialView();
         initialListener();
         ButterKnife.bind(this);   //how to use butterknife
+        mGestureDetector = new GestureDetector(this,new simpleGestureListener());
+        fl.setOnTouchListener(this);
     }
     private void initialView(){
         btn1 = (ImageButton) findViewById(R.id.btn1);
@@ -131,4 +141,59 @@ public class MainActivity extends BasicActivity {
 
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return mGestureDetector.onTouchEvent(event);  //returns true/false on whether button has been touched
+        //return false;
+    }
+
+    private class simpleGestureListener extends GestureDetector.SimpleOnGestureListener{
+            public boolean onDown(MotionEvent e){
+                UtilLog.logD("MyGesture","OnDown");
+                toastShort("On Down");
+                return true;
+            }
+
+        public void onShowPress(MotionEvent e){
+            UtilLog.logD("MyGesture","OnDown");
+            toastShort("On ShowPress");
+            //return false;
+        }
+        public void onLongPress(MotionEvent e){
+            UtilLog.logD("MyGesture","OnDown");
+            toastShort("On LongPress");
+            //return false;
+        }
+        public boolean onSingleTapUp(MotionEvent e){
+            toastShort("On SingleTapUp");
+            return true;
+        }
+        public boolean onSingleTapConfirmed(MotionEvent e){
+            toastShort("On SingleTapConfirmed");
+            return true;
+        }
+        //detect how much is scrolled, and direction, add textView with animation to show new text view based on scroll direction
+        //use the top left button to make text view disappear, or use scroll backwards to make the text view animation disappear.
+        //use distance calculations can get the scroll directions
+        public boolean onScroll(MotionEvent e1, MotionEvent e2,float distanceX, float distanceY){
+            UtilLog.logD("My Gesture","On Scroll: "+(e2.getX()-e1.getX()+" "+distanceX));
+            toastShort("On Scroll");
+            return true;
+        }
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){
+            toastShort("On Fling");
+            return true;
+        }
+
+        public boolean onDoubleTap(MotionEvent e){
+            toastShort("On Double Tap");
+            return true;
+        }
+
+        public boolean onDoubleTapEvent(MotionEvent e){
+            toastShort("On Double Tap Event");
+            return true;
+        }
+
+    }
 }

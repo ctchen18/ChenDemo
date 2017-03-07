@@ -76,35 +76,34 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/frame_bar"
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_above="@+id/tool_bar"
         android:layout_below="@id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
-    <Button
+        <Button
         android:id="@+id/main_timer_bt"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:text="Timer"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+            android:layout_gravity="left"/>
         <Button
         android:id="@+id/main_animation_bt"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:text="Animation"
         android:textSize="12sp"
-        android:layout_gravity="center_horizontal"
-
-        />
+        android:layout_gravity="center_horizontal" />
         <Button
             android:id="@+id/main_animator"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:text="Animator"
             android:textSize="12sp"
-            android:layout_gravity="center_horizontal"
-            />
-    </LinearLayout>
+            android:layout_gravity="right" />
+
+    </FrameLayout>
 </RelativeLayout>
