@@ -31,7 +31,7 @@ public class CustomDialogForQuizz extends Dialog {
     public void clickCancel(){
         listener.onClickListener();
         listener.msgChannel("Cancel");
-        dismiss();
+
     }
 
 
