@@ -65,12 +65,15 @@ public class MainActivity extends BasicActivity implements View.OnTouchListener{
            @Override
            public void msgChannel(String activityName) {
                 UtilLog.logD("Message Received",activityName);
-               if(activityName =="Cancel") {
-                   //Intent intent = new Intent(this.getClass(), ViewPagerActivity.class);
-               }if(activityName =="Center") {
-                   //Intent intent = new Intent(this, DialogActivity.class);
-               }if(activityName =="Right") {
-                   //Intent intent = new Intent(this, ListViewActivity.class);
+               if(activityName.equals("Cancel")) {
+                   Intent intent = new Intent(MainActivity.this, ViewPagerActivity.class);
+                   startActivity(intent);
+               }if(activityName .equals("Center")) {
+                   Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+                   startActivity(intent);
+               }if(activityName .equals("Right")) {
+                   Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+                   startActivity(intent);
                }
            }
            @Override
