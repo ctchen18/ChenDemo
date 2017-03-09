@@ -13,6 +13,8 @@ import android.widget.Toast;
 import android.util.Log;
 
 import com.example.user.chendemo.bean.Book;
+import com.example.user.chendemo.dialog.CustomDialog;
+import com.example.user.chendemo.dialog.CustomDialogForQuizz;
 import com.example.user.chendemo.util.UtilLog;
 
 import butterknife.BindView;
@@ -26,6 +28,7 @@ public class MainActivity extends BasicActivity implements View.OnTouchListener{
 
     private GestureDetector mGestureDetector;
 
+    private int checkID;
     @BindView(R.id.frame_layout)
         FrameLayout fl;
     @OnClick(R.id.btn2)
@@ -46,16 +49,37 @@ public class MainActivity extends BasicActivity implements View.OnTouchListener{
                 startActivity(intent);
     }
     @OnClick(R.id.main_animation_bt)
-    public void animationCLick(){
+    public void animationClick(){
         Intent intent = new Intent(this,AnimationActivity.class);
         startActivity(intent);
     }
     @OnClick(R.id.main_animator)
-    public void animatorCLick(){
+    public void animatorClick(){
         Intent intent = new Intent(this,AnimatorActivity.class);
         startActivity(intent);
     }
 
+    @OnClick(R.id.quizz_four)
+    public void quizzClick(){
+       CustomDialogForQuizz cd= new CustomDialogForQuizz(this, new CustomDialogForQuizz.ICustomDialogEventListener(){
+           @Override
+           public void msgChannel(String activityName) {
+                UtilLog.logD("Message Received",activityName);
+               if(activityName =="Cancel") {
+                   //Intent intent = new Intent(this.getClass(), ViewPagerActivity.class);
+               }if(activityName =="Center") {
+                   //Intent intent = new Intent(this, DialogActivity.class);
+               }if(activityName =="Right") {
+                   //Intent intent = new Intent(this, ListViewActivity.class);
+               }
+           }
+           @Override
+            public void onClickListener() {
+
+            }
+       });
+        cd.show();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

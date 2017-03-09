@@ -38,8 +38,9 @@
             android:name=".launch_mode_d"
             android:launchMode="singleInstance" />
         <activity android:name=".TimerActivity" />
-        <activity android:name=".AnimationActivity"></activity>
-        <activity android:name=".AnimatorActivity"></activity>
+        <activity android:name=".AnimationActivity" />
+        <activity android:name=".AnimatorActivity" />
+        <activity android:name=".dialog.CustomDialogForQuizz"></activity>
     </application>
 
 </manifest>

@@ -105,5 +105,12 @@
             android:textSize="12sp"
             android:layout_gravity="right" />
 
+        <Button
+            android:id="@+id/quizz_four"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="Quizz4"
+            android:textSize="12sp"
+            android:layout_gravity="center_vertical"/>
     </FrameLayout>
 </RelativeLayout>
