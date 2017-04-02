@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -27,6 +28,7 @@
             android:gravity="center"
         />
         <ImageButton
+            android:id="@+id/leftMenuOpenBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
@@ -75,14 +77,15 @@
             android:background="@color/white"/>
     </LinearLayout>
 
-
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_above="@+id/tool_bar"
         android:layout_below="@id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:visibility="visible">
+
         <Button
         android:id="@+id/main_timer_bt"
         android:layout_width="100dp"
@@ -113,4 +116,14 @@
             android:textSize="12sp"
             android:layout_gravity="center_vertical"/>
     </FrameLayout>
+    <include layout="@layout/activity_main_left_menu"
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tool_bar"
+        android:layout_below="@id/title_bar"
+        android:visibility="invisible"
+        >
+    </include>
+
 </RelativeLayout>

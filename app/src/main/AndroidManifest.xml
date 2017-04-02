@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".ChenApplication"
         android:allowBackup="true"
@@ -12,6 +17,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!--
+            <provider
+            android:authorities="com.example.user.chendemo"
+            android:name=".content.Provider"
+            android:exported="true"></provider>
+        -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +52,11 @@
         <activity android:name=".TimerActivity" />
         <activity android:name=".AnimationActivity" />
         <activity android:name=".AnimatorActivity" />
-        <activity android:name=".dialog.CustomDialogForQuizz"></activity>
+        <!-- <activity android:name=".dialog.CustomDialogForQuizz"></activity> -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".MainLeftMenuActivity"></activity>
     </application>
 
 </manifest>

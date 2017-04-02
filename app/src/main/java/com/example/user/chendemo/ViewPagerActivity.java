@@ -29,15 +29,15 @@ public class ViewPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
         Intent intent=getIntent();
-        String msg = intent.getStringExtra("key");
-        UtilLog.logD("ViewPagerActivity, value is " ,msg);
-        Bundle bundle = intent.getExtras();
-        Integer number = bundle.getInt("Integer",0);
-        int fakeNumber = bundle.getInt("fake",0);
-        UtilLog.logD("ViewPagerActivity, number is ", number.toString());
-        UtilLog.logD("ViewPagerActivity, fake number  is " ,String.valueOf(fakeNumber));
-        Book book = (Book) bundle.getSerializable("book");
-        UtilLog.logD("ViewPagerActivity, author  is ", book.getAuthor());
+//        String msg = intent.getStringExtra("key");
+//        UtilLog.logD("ViewPagerActivity, value is " ,msg);
+//        Bundle bundle = intent.getExtras();
+//        Integer number = bundle.getInt("Integer",0);
+//        int fakeNumber = bundle.getInt("fake",0);
+//        UtilLog.logD("ViewPagerActivity, number is ", number.toString());
+//        UtilLog.logD("ViewPagerActivity, fake number  is " ,String.valueOf(fakeNumber));
+//        Book book = (Book) bundle.getSerializable("book");
+//        UtilLog.logD("ViewPagerActivity, author  is ", book.getAuthor());
         initView();
     }
 

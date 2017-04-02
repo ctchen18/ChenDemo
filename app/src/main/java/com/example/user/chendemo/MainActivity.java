@@ -1,13 +1,17 @@
 package com.example.user.chendemo;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.util.Log;
@@ -31,6 +35,34 @@ public class MainActivity extends BasicActivity implements View.OnTouchListener{
     private int checkID;
     @BindView(R.id.frame_layout)
         FrameLayout fl;
+
+    @BindView(R.id.topMenu)
+    LinearLayout top;
+    @OnClick(R.id.leftMenuOpenBtn)
+    public void openLeftMenu(){
+        if (top.getVisibility()==View.VISIBLE){
+
+
+            PropertyValuesHolder p1=PropertyValuesHolder.ofFloat("ScaleX",1,0);
+            ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(top,p1);
+            animator.setDuration(1000);
+            animator.start();
+            top.setVisibility(View.INVISIBLE);
+
+        }
+        else{
+            top.setVisibility(View.VISIBLE);
+            //PropertyValuesHolder p2=PropertyValuesHolder.ofFloat("PivotX",0);
+            PropertyValuesHolder p1=PropertyValuesHolder.ofFloat("ScaleX",0,1);
+            top.setPivotX(0);
+            ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(top,p1);
+            //ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(top, p2,p1); //translationY
+            animator.setDuration(1000);
+            animator.start();
+        }
+
+    }
+
     @OnClick(R.id.btn2)
     public void button2Click(){
         Intent intent= new Intent(this,DialogActivity.class);
@@ -183,12 +215,12 @@ public class MainActivity extends BasicActivity implements View.OnTouchListener{
 
         public void onShowPress(MotionEvent e){
             UtilLog.logD("MyGesture","OnDown");
-            toastShort("On ShowPress");
+            //toastShort("On ShowPress");
             //return false;
         }
         public void onLongPress(MotionEvent e){
             UtilLog.logD("MyGesture","OnDown");
-            toastShort("On LongPress");
+            //toastShort("On LongPress");
             //return false;
         }
         public boolean onSingleTapUp(MotionEvent e){
@@ -203,12 +235,19 @@ public class MainActivity extends BasicActivity implements View.OnTouchListener{
         //use the top left button to make text view disappear, or use scroll backwards to make the text view animation disappear.
         //use distance calculations can get the scroll directions
         public boolean onScroll(MotionEvent e1, MotionEvent e2,float distanceX, float distanceY){
-            UtilLog.logD("My Gesture","On Scroll: "+(e2.getX()-e1.getX()+" "+distanceX));
-            toastShort("On Scroll");
+            UtilLog.logD("My Gesture","On Scroll: "+e2.getX()+"-"+e1.getX()+"="+(e2.getX()-e1.getX()+" "+distanceX));
+            if (top.getVisibility()==View.VISIBLE && e2.getX()-e1.getX()<0){
+                openLeftMenu();
+            }
+            if(top.getVisibility()==View.INVISIBLE && e2.getX()-e1.getX()>0){
+                openLeftMenu();
+            }
+            //toastShort("On Scroll");
             return true;
         }
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){
-            toastShort("On Fling");
+
+            //toastShort("On Fling");
             return true;
         }
 
